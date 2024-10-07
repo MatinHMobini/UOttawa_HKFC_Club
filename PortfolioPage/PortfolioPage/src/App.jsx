@@ -1,11 +1,10 @@
 import React from 'react'
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Technologies from './components/Technologies';
-import Experience from './components/Experience';
-import { PROJECTS } from './constants';
-import Projects from './components/Projects';
+import Introduction from './components/Introduction';
+import MissionStatment from './components/MissionStatment';
+import Event from './components/Events';
+import AnnouncementBoard from './components/AnnouncementBoard';
+import ClubMembers from './components/ClubMembers';
 import Contact from './components/Contact';
 
 const App = () => {
@@ -18,11 +17,11 @@ const App = () => {
       
       <div className="container mx-auto px-8"> 
         <Navbar />
-        <Hero />
-        <About />
-        <Technologies />
-        <Experience />
-        <Projects />
+        <Introduction />
+        <MissionStatment />
+        <Event />
+        <AnnouncementBoard />
+        <ClubMembers />
         <Contact />
       </div>
       
