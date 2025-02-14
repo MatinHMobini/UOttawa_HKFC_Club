@@ -2,7 +2,7 @@ import { MEMBERS } from "../constants";
 import { motion } from "framer-motion";
 import { FaLinkedin, FaEnvelope } from "react-icons/fa"; 
 
-const ClubMembers = () => {
+const ClubMembers = ({ language }) => {
   return (
     <div className="border-b border-neutral-900 pb-4">
       <motion.h2 
@@ -11,8 +11,9 @@ const ClubMembers = () => {
         transition={{duration:0.5, delay: 0.4}}
         className="my-20 text-center text-4xl font-semibold"
       >
-        Rencontrez Les Membres De Notre Club / Meet Our Club Members
+        {language === "en" ? "Meet Our Club Members" : "Rencontrez Les Membres De Notre Club"}
       </motion.h2>
+
       <div>
         {MEMBERS.map((member, index) => (
           <div key={index} className="mb-8 flex flex-wrap lg:justify-center"> 
@@ -28,10 +29,10 @@ const ClubMembers = () => {
                 className="mb-6 rounded object-cover"
                 style={{
                   objectFit: 'cover',
-                  width: '100%',              // Image scales responsively
-                  height: 'auto',             // Maintain aspect ratio
-                  maxWidth: '200px',          // Set a maximum width limit
-                  maxHeight: '200px',         // Set a maximum height limit
+                  width: '100%',              
+                  height: 'auto',             
+                  maxWidth: '200px',         
+                  maxHeight: '200px',        
                 }}
               />
             </motion.div>
@@ -41,8 +42,18 @@ const ClubMembers = () => {
               transition={{duration:0.5, delay: 0.4}}
               className="w-full max-w-xl lg:w-3/4"
             >
-              <h6 className="mb-2 font-semibold">{member.name} - <span className="text-sm text-purple-100">{member.role}</span></h6>
-              <p className="mb-4 text-neutral-400">{member.description}</p>
+              <h6 className="mb-2 font-semibold">{member.name} - 
+                <span className="text-sm text-purple-100">
+                  {language === "en" ? member.role.split(" / ")[1] : member.role.split(" / ")[0]}
+                </span>
+              </h6>
+              
+              <p className="mb-4 text-neutral-400">
+                {language === "en" 
+                  ? member.description.split(". ")[1] 
+                  : member.description.split(". ")[0]
+                }
+              </p>
 
               {/* Links to LinkedIn and Email */}
               <div className="flex space-x-2">
